@@ -47,6 +47,10 @@ h3 { /*Section Title*/
     background: #99CCFF;
 }
 
+.nav .header {
+    position: relative;
+}
+
 .header-menu {
     color: blue;
     width: 100%;
@@ -79,6 +83,12 @@ h3 { /*Section Title*/
 
 .right {
     float: right;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .clearfix::after {
