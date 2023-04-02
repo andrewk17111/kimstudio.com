@@ -1,0 +1,116 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Sans-serif;
+    min-width: 40em;
+    height: 100%;
+}
+
+img {
+    padding: 10px
+}
+
+h1 { /*Site Title (Only In Header)*/
+    margin: 0em;
+    font-style: italic;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+h2 { /*Page Title*/
+    font-size: 1.5em;
+    font-weight: normal;
+    color: red;
+    padding: 0em;
+    padding-top: 0.25em;
+    margin: 0px;
+}
+
+h3 { /*Section Title*/
+    font-size: 1.25em;
+    font-weight: strong;
+    padding: 0em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin: 0px;
+}
+
+.header {
+    color: black;
+    width: 100%;
+    padding: 0px;
+    overflow: hidden;
+    margin: 0px;
+    top: 0px;
+    text-align: center;
+    position: fixed;
+    background: #99CCFF;
+}
+
+.header-menu {
+    color: blue;
+    width: 100%;
+    padding: 0px;
+    overflow: visible;
+    list-style-type: none;
+    margin: 0px;
+}
+
+.header-menu li {
+    display: inline;
+}
+
+.header-menu li a {
+    display: inline-block;
+    color: blue;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5em;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.footer {
+    width: 98%;
+    padding: 1%;
+    overflow: hidden;
+    background: #99CCFF;
+}
+
+.right {
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+    margin-bottom: 3em;
+}
+
+.content {
+    width: 80%;
+    padding: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.column {
+    float: left;
+    /*padding: 0px;*/
+}
+
+.box {
+    border-color: silver;
+    border-width: 0.1em;
+    border-radius: 0.5em;
+    border-style: solid;
+    width: 25em;
+    padding: 0.5em;
+}
+
+.since-1974 {
+    transform: rotate(315deg);
+    display: inline-block;
+    font-size: 1.25em;
+}
