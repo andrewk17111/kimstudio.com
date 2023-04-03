@@ -85,6 +85,10 @@ h3 { /*Section Title*/
     float: right;
 }
 
+.left {
+    float: left;
+}
+
 .center {
     text-align: center;
     margin-left: auto;

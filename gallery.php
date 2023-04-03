@@ -4,109 +4,45 @@
     <link rel="shortcut icon" type="image/png" href="pictures/IlHoiKimStudioLogo.png">
     <title>Kim Studio Of Tae Kwon Do | Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles/gallery.css">
     <meta charset="UTF-8">
     <meta name="description" content="Home page for Kim Studio Of Tae Kwon Do in Harrisburg, PA">
     <meta name="keywords" content="Tae Kwon Do,Taekwondo,Kim Studio,Harrisburg,WTF,Il Hoi Kim">
     <meta name="author" content="Andrew K">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<style>	
-    .gallery {
-        display: inline-block;
-        display: -webkit-flex; /* Safari */
-        -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-        display: flex;   
-        flex-wrap: wrap;
-    }
-    
-    .gallery-img {
-        max-width: 10em;
-        max-height: 10em;
-        margin: auto;
-        vertical-align: middle;
-    }
-    
-    /*.mySlides {display:none}*/
-    
-    .demo {cursor:pointer}
-
-button {
-    color: white;
-    background-color: black;
-    border: none;
-}
-
-.navigation {
-    height: 100%;
-    width: 10%;
-    font-size: 2em;
-}
-
-button:hover {
-    background-color: rgb(255, 0, 0);
-}
-
-.lightbox {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(32,32,32);
-    display: none;
-}
-
-.mySlides {
-    display: none;
-    max-width: 75%;
-    max-height: 100%;
-    margin: auto;
-}
-
-.img-section {
-    height: 80%;
-    width: 80%;
-    margin: auto;
-    vertical-align: middle;
-}
-</style>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <body>
     <!--Header-->
     <div w3-include-html="header.html"></div>
     <!--Body-->
-    <div class="clearfix">
+    <div class="clearfix" style="margin-top: 3em;">
         <?php
-            $dir    = 'pictures/gallery';
-            $files = scandir($dir);
+            $dir = 'pictures/gallery';
+            $thumb_dir = 'pictures/gallery/thumbnails';
+            $files = scandir($thumb_dir);
         ?>
-        <div class="column content" style="margin-top: 3em;">
-            <div class="w3-content" style="max-width:1200px"><center>
-                <div class="w3-row-padding w3-section gallery">
-                    <?php
-                        $int = 1;
-                        foreach ($files as $value) {
-                            if(is_file('pictures/gallery/' . $value)) {
-                                echo '<div class="w3-col s4" style="width: 10em; height: 10em;">';
-                                echo '<img class="demo gallery-img" src="pictures/gallery/' . $value . '" onclick="currentDiv(' . $int . ')">';
-                                echo '</div>';
-                                $int = $int + 1;
-                            }
-                        }
-                    ?>
-                </div>
-            </center></div>
-        </div>
-        <div class="lightbox" id="lightbox">
-            <button class="right" style="height: 3em; width: 3em;" onclick="closeLightBox()">X</button>
-            <div class="img-section">
-                <button class="navigation" onclick="plusDivs(-1)">&lt;</button>
-                <?php
-                    foreach ($files as $value) {
-                        if(is_file('pictures/gallery/' . $value)) {
-                            echo '<img class="mySlides" src="pictures/gallery/' . $value . '">';
-                        }
+        <div class="column content">
+            <?php
+                $int = 1;
+                foreach ($files as $value) {
+                    if(is_file('pictures/gallery/' . $value)) {
+                        echo '<div class="thumbnail" style="background-image: url(\'pictures/gallery/' . $value . '\');"></div>';
+                        $int = $int + 1;
                     }
-                ?>
-                <button class="right navigation" onclick="plusDivs(1)">&gt;</button>
+                }
+            ?>
+        </div>
+        <!--Lightbox-->
+        <div class="lightbox" id="lightbox">
+            <div style="width:100%; overflow: auto;">
+                <a class="button close-button" onclick="closeLightBox()"></a>
+            </div>
+            <div class="slideshow">
+                <a class="button navigation left" onclick="plusDivs(-1)"></a>
+                <div class="slide" style="background-image: url('pictures/gallery/A.JPG')"></div>
+                <div class="slide" style="background-image: url('pictures/gallery/B.JPG')"></div>
+                <a class="button navigation right" onclick="plusDivs(1)"></a>
             </div>
         </div>
     </div>
@@ -117,7 +53,7 @@ button:hover {
     w3.includeHTML()
     
     var slideIndex = 1;
-    showDivs(slideIndex);
+    closeLightBox();
     
     function plusDivs(n) {
         showDivs(slideIndex += n);
@@ -129,19 +65,22 @@ button:hover {
     
     function showDivs(n) {
         var i;
-        var x = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("demo");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
+        var x = document.getElementsByClassName("slide");
+
+        if (n > x.length) {
+            slideIndex = 1
+        }
+
+        if (n < 1) {
+            slideIndex = x.length
+        }
+
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-        }
+        
         x[slideIndex-1].style.display = "inline-block";
         document.getElementById("lightbox").style.display = "block";
-        dots[slideIndex-1].className += " w3-opacity-off";
     }
     
     function closeLightBox() {
