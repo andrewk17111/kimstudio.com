@@ -1,0 +1,11 @@
+.flag {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logo {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 2em;
+    padding-right: 2em;
+}

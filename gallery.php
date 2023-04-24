@@ -3,7 +3,7 @@
 <head>
     <link rel="shortcut icon" type="image/png" href="pictures/IlHoiKimStudioLogo.png">
     <title>Kim Studio Of Tae Kwon Do | Home</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" type="text/css" href="styles/gallery.css">
     <meta charset="UTF-8">
     <meta name="description" content="Home page for Kim Studio Of Tae Kwon Do in Harrisburg, PA">
@@ -26,8 +26,8 @@
             <?php
                 $int = 1;
                 foreach ($files as $value) {
-                    if(is_file('pictures/gallery/' . $value)) {
-                        echo '<div class="thumbnail" style="background-image: url(\'pictures/gallery/' . $value . '\');"></div>';
+                    if(is_file('pictures/gallery/thumbnails/' . $value)) {
+                        echo '<div class="thumbnail" style="background-image: url(\'pictures/gallery/thumbnails/' . $value . '\');" onclick="currentDiv(' . $int . ')"></div>';
                         $int = $int + 1;
                     }
                 }
@@ -40,8 +40,15 @@
             </div>
             <div class="slideshow">
                 <a class="button navigation left" onclick="plusDivs(-1)"></a>
-                <div class="slide" style="background-image: url('pictures/gallery/A.JPG')"></div>
-                <div class="slide" style="background-image: url('pictures/gallery/B.JPG')"></div>
+                <?php
+                    $int = 1;
+                    foreach ($files as $value) {
+                        if(is_file('pictures/gallery/' . $value)) {
+                            echo '<div class="slide" style="background-image: url(\'pictures/gallery/' . $value . '\');"></div>';
+                            $int = $int + 1;
+                        }
+                    }
+                ?>
                 <a class="button navigation right" onclick="plusDivs(1)"></a>
             </div>
         </div>
